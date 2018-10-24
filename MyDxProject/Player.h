@@ -2,6 +2,8 @@
 #include"DxLib.h"
 #include <math.h>
 #include "Vector2D.h"
+//#define 定義文 値or式(C#でいうconstとかreadonly的な)
+//ToRadianが呼ばれると			↓ が実行される　的な？
 #define ToRadian(degree) ((degree)*(3.14159265359f/180.0f))
 
 //playerクラス
@@ -15,9 +17,10 @@ public:
 	void Draw();//描画
 
 private:
-	float _x, _y;
+	
 	float _moveVecX, _moveVecY;
 	float _angle;
-	float _grp;
-	Vector2D<float> _vector2D;//追加
+	int _grp;
+	Vector2D<float> _pos;
+	Vector2D<float> _moveVec;
 };

@@ -54,7 +54,7 @@ public:
 		return{ _x / length(), _y / length() };
 	}
 
-private:
+public:
 	T _x;
 	T _y;
 };
