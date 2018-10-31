@@ -152,13 +152,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Box.cpp" />
     <ClCompile Include="DrawPixel.cpp" />
     <ClCompile Include="GameMain.cpp" />
+    <ClCompile Include="GameObjectContainer.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Box.h" />
     <ClInclude Include="FPS.h" />
     <ClInclude Include="GameMain.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameObjectContainer.h" />
+    <ClInclude Include="ObjectTransform.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
