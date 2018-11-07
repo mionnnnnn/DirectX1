@@ -4,34 +4,24 @@
 
 //èâä˙âª
 void GameMain::Initialize() {
-
 	_player = new Player();
-
-	_container.AddGameObject(_player);
-	_container.AddGameObject(new Box(Vector2D<float>(100, 100)));
-	_container.AddGameObject(new Box(Vector2D<float>(400, 300)));
-	_container.AddGameObject(new Box(Vector2D<float>(100, 300)));
-	_container.AddGameObject(new Box(Vector2D<float>(400, 400)));
-	_container.Start();
-
-	//_player->Start();
-	//_box = new Box();
-	//_box->Start();
+	GameObjectContainer::GetInstance()->AddGameObject(_player);
+	GameObjectContainer::GetInstance()->AddGameObject(new Box(Vector2D<float>(100, 100)));
+	GameObjectContainer::GetInstance()-> AddGameObject(new Box(Vector2D<float>(400, 300)));
+	GameObjectContainer::GetInstance()->AddGameObject(new Box(Vector2D<float>(100, 300)));
+	GameObjectContainer::GetInstance()->AddGameObject(new Box(Vector2D<float>(400, 400)));
+	//GameObjectContainer::GetInstance()->Start();
 }
 //é¿çs
 void GameMain::MainLoop() {
-	_container.Update();
-	_container.Draw();
-	_container.HitCheck();
-	_container.DestroyCheck();
-	//_player->Update();
-	//_player->Draw();
-	//_box->Update();
-	//_box->Draw();
+	GameObjectContainer::GetInstance()->Update();
+	GameObjectContainer::GetInstance()->Draw();
+	GameObjectContainer::GetInstance()->HitCheck();
+	GameObjectContainer::GetInstance()->DestroyCheck();
 }
 //âï˙
 void GameMain::Release() {
-	_container.Release();
-	//delete _player;
-	//delete _box;
+	GameObjectContainer::GetInstance()->Release();
+	GameObjectContainer::GetInstance()->DestroyInstance();
+	ResourceManager::DestroyInstance();
 }

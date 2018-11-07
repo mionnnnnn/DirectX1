@@ -1,5 +1,7 @@
 #include "Player.h"
 #include "Vector2D.h"
+#include"Bullet.h"
+#include"GameObjectContainer.h"
 
 //コンストラクタ
 Player::Player()// :_pos(320,240), _moveVec(0,0), _angle(0) 
@@ -40,6 +42,10 @@ void Player::Update() {
 	//左キーで左回転
 	if (key & PAD_INPUT_LEFT)
 		_transform._angle -= ToRadian(4);
+
+	//ボタンを押すと弾発射（Space）
+	if (key & PAD_INPUT_10)
+		GameObjectContainer::GetInstance()->AddGameObject(new Bullet(&_transform));
 
 	//アフィン変換
 	float moveX = 3;

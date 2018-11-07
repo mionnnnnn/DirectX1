@@ -1,10 +1,19 @@
 #include"GameObjectContainer.h"
 
+//	10/31
 //コンテナにgameobjectを追加
+//	11/07
+//GameObjectContainerのインスタンスを格納するstatic変数を宣言
+//staticメンバ変数を定義するには、「クラス名＋"::"＋静的メンバ変数名」という
+//グローバル変数を宣言する
+
+GameObjectContainer* GameObjectContainer::_instance = NULL;
+
 void GameObjectContainer::AddGameObject(GameObject* object) {
 	//nullなら処理しない
 	if (object == NULL)
 		return;
+	object->Start();//GameObjectが追加されると勝手にStart()が呼ばれる
 	_container.push_back(object);
 }
 
@@ -99,5 +108,21 @@ void GameObjectContainer::DestroyCheck() {
 			continue;
 		}
 		itr++;
+	}
+}
+
+//インスタンス取得用のstaticメンバ関数を宣言
+GameObjectContainer* GameObjectContainer::GetInstance()
+{
+	if (_instance == NULL)
+		_instance = new GameObjectContainer();
+	return _instance;
+}
+
+//インスタンス解放用のstaticメンバ関数を宣言
+void GameObjectContainer::DestroyInstance() {
+	if (_instance != NULL) {
+		delete _instance;
+		_instance = NULL;
 	}
 }

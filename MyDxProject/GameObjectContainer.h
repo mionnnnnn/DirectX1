@@ -3,6 +3,12 @@
 #include<list>
 
 class GameObjectContainer {
+private:
+	//コンストラクタ群をprivateにし、
+	//外からインスタンスが生成できないようにする
+	GameObjectContainer(){}
+	GameObjectContainer(const GameObjectContainer&){}
+
 public:
 	//コンテナにGameObjectを追加
 	void AddGameObject(GameObject* object);
@@ -18,7 +24,14 @@ public:
 	void HitCheck();
 	//destroy状態か確認
 	void DestroyCheck();
+	//インスタンス取得用のstaticメンバ関数を宣言
+	static GameObjectContainer* GetInstance();
+	//インスタンス解放用のstaticメンバ関数を宣言
+	static void DestroyInstance();
 
 private: 
-	std::list<GameObject*> _container;//オブジェクトコンテナ
+	//オブジェクトコンテナ
+	std::list<GameObject*> _container;
+	//インスタンス（実体）格納用のstatic変数
+	static GameObjectContainer* _instance;
 };

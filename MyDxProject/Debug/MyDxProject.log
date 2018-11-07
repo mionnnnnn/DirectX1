@@ -1,8 +1,9 @@
-﻿  Player.cpp
-  コードを生成中...
-  スキップ中... (関連する変更は検出されませんでした)
-  GameObjectContainer.cpp
+﻿  ResourceManager.cpp
+  Player.cpp
   GameMain.cpp
+  Bullet.cpp
+  コードを生成中...
+  コンパイル中...
   DrawPixel.cpp
-  Box.cpp
+  コードを生成中...
   MyDxProject.vcxproj -> C:\K017A1612\C++\DirectX\MyDxProject\Debug\MyDxProject.exe

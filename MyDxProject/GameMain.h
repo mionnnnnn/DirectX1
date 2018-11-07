@@ -4,6 +4,10 @@
 #include "GameObject.h"
 #include "Box.h"
 #include "GameObjectContainer.h"
+#include "ResourceManager.h"
+
+#include"DxLib.h"
+#include "Player.h"
 
 class GameMain {
 public:
@@ -13,7 +17,7 @@ public:
 private:
 	GameObject* _player;
 	GameObject* _box;
-	GameObjectContainer _container;
+	//GameObjectContainer _container;
 	//Player _player;
 	//int key;
 	//int playerX = 0;
