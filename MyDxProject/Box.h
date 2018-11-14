@@ -9,6 +9,7 @@ class Box : public GameObject {
 public:
 	Box();
 	Box(Vector2D<float> pos);
+	Box(Vector2D<float>pos, std::string tag);
 	~Box();
 	void Start();
 	void Update();

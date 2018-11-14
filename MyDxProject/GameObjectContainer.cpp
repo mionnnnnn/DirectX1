@@ -92,8 +92,10 @@ void GameObjectContainer::HitCheck() {
 			if (srcLeft < tgtRight &&
 				srcTop < tgtBottom &&
 				tgtLeft < srcRight&&
-				tgtTop < srcBottom)
+				tgtTop < srcBottom) {
 				(*itr)->OnHitBox((*tgt));//衝突検知のメソッド呼び出し
+				(*tgt)->OnHitBox((*itr));
+			}
 		}
 	}
 }

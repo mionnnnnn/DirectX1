@@ -10,6 +10,12 @@ Box::Box(Vector2D<float> pos) {
 	_transform._size = Vector2D<float>(32, 32);
 }
 
+Box::Box(Vector2D<float>pos, std::string tag) {
+	_transform._position = pos;
+	_transform._size = Vector2D<float>(32, 32);
+	_tag = tag;
+}
+
 Box:: ~Box() {
 
 }

@@ -51,3 +51,8 @@ void Bullet::Draw() {
 		_grp, TRUE);
 }
 
+//Õ“ËŒŸ’m
+void Bullet::OnHitBox(GameObject* other) {
+	if (other->_tag == "Box")
+		Destroy();
+}

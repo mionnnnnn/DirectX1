@@ -5,9 +5,9 @@
 #include "Box.h"
 #include "GameObjectContainer.h"
 #include "ResourceManager.h"
-
 #include"DxLib.h"
 #include "Player.h"
+#include"Enemy.h"
 
 class GameMain {
 public:
@@ -16,6 +16,7 @@ public:
 	void Release();
 private:
 	GameObject* _player;
+	Enemy* _enemy;
 	GameObject* _box;
 	//GameObjectContainer _container;
 	//Player _player;

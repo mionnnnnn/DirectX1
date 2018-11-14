@@ -3,9 +3,10 @@
 #include <math.h>
 #include "Vector2D.h"
 #include "GameObject.h"
-//#define 定義文 値or式(C#でいうconstとかreadonly的な)
-//ToRadianが呼ばれると			↓ が実行される　的な？
+// #define 定義文 値or式(C#でいうconstとかreadonly的な)
+// ToRadianが呼ばれると			↓ が実行される　的な？
 #define ToRadian(degree) ((degree)*(3.14159265359f/180.0f))
+#define SHOT_DELAYFRAME 10//次の弾を打つまでの最大待機時間
 
 //playerクラス
 class Player : public GameObject {
@@ -19,8 +20,6 @@ public:
 private:
 	
 	int _grp;
-	//float _moveVecX, _moveVecY;
-	//float _angle;
-	//Vector2D<float> _pos;
-	//Vector2D<float> _moveVec;
+	//次の弾を打つまでの待機時間
+	int _waitFrame;
 };

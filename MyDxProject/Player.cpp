@@ -8,6 +8,7 @@ Player::Player()// :_pos(320,240), _moveVec(0,0), _angle(0)
 {
 	_transform._position = Vector2D<float>(320, 240);
 	_transform._size = Vector2D<float>(64, 64);
+	_waitFrame = 0;
 
 }
 
@@ -43,9 +44,22 @@ void Player::Update() {
 	if (key & PAD_INPUT_LEFT)
 		_transform._angle -= ToRadian(4);
 
-	//ボタンを押すと弾発射（Space）
-	if (key & PAD_INPUT_10)
-		GameObjectContainer::GetInstance()->AddGameObject(new Bullet(&_transform));
+	//待機フレームが0
+	if (_waitFrame == 0) {
+		//ボタンを押すと弾発射（Space）
+		if (key & PAD_INPUT_10) {
+			GameObjectContainer::GetInstance()->AddGameObject(new Bullet(&_transform));
+			_waitFrame = 1;//フレームの値を1にする
+		}
+	}
+	else
+	{
+		//待機時間を加算
+		_waitFrame++;
+		//待機時間が一定を超えたら
+		if (_waitFrame > SHOT_DELAYFRAME) 
+			_waitFrame = 0;
+	}
 
 	//アフィン変換
 	float moveX = 3;
