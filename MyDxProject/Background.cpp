@@ -16,7 +16,7 @@ void Background::Start()
 {
 	_grp = LoadGraph("Resource\\img\\bg.png");
 	//サウンドロード
-	_snd = ResourceManager::GetInstance()->LoadResource("Resource\\sound\\nv_01.mp3", TYPE_SOUND);
+	_snd = ResourceManager::GetInstance()->LoadResource("Resource\\sound\\gameplay_BGM.mp3", TYPE_SOUND);
 
 	//再生
 	PlaySoundMem(_snd, DX_PLAYTYPE_LOOP);

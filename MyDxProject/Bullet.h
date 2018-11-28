@@ -15,4 +15,5 @@ public:
 private:
 	int _grp;
 	int _snd;
+	int _damagesnd;
 };

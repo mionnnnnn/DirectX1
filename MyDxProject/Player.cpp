@@ -24,7 +24,7 @@ Player::~Player() {
 }
 //ŠJnˆ—
 void Player::Start() {
-	_grp = LoadGraph("Resource\\img\\player.png");
+	_grp = LoadGraph("Resource\\img\\playerorigin.png");
 	
 }
 

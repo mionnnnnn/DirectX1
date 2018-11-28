@@ -3,9 +3,8 @@
 #include<map>
 #include"DxLib.h"
 
-
 //—ñ‹“Œ^‚ğéŒ¾
-enum RESOURCE_TYPE :int {
+enum RESOURCE_TYPE : int {
 	TYPE_IMAGE, TYPE_SOUND
 };
 

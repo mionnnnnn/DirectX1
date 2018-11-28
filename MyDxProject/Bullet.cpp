@@ -18,10 +18,11 @@ Bullet::~Bullet() {
 void Bullet::Start() {
 	//弾画像
 	std::random_device rand;
-	_grp = ResourceManager::GetInstance()->LoadResource("Resource\\img\\bullet.png");
+	_grp = ResourceManager::GetInstance()->LoadResource("Resource\\img\\bulletorigin.png");
 
 	//サウンドロード
-	_snd = ResourceManager::GetInstance()->LoadResource("Resource\\sounf\\laser2.mp3", TYPE_SOUND);
+	_snd = ResourceManager::GetInstance()->LoadResource("Resource\\sound\\laser2.mp3", TYPE_SOUND);
+	_damagesnd = ResourceManager::GetInstance()->LoadResource("Resource\\sound\\damage1.mp3", TYPE_SOUND);
 
 	//サウンド再生
 	PlaySoundMem(_snd, DX_PLAYTYPE_BACK);
@@ -64,7 +65,6 @@ void Bullet::Draw() {
 void Bullet::OnHitBox(GameObject* other) {
 	if (other->_tag == "Box")
 		Destroy();
-	if (other->_tag == "Enemy") {
-		
-	}
+	if (other->_tag == "Enemy")
+		PlaySoundMem(_damagesnd, DX_PLAYTYPE_BACK);
 }

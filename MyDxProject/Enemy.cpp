@@ -30,7 +30,7 @@ Enemy::~Enemy() {
 }
 
 void Enemy::Start() {
-	_grp = LoadGraph("Resource\\img\\zombie.png");
+	_grp = LoadGraph("Resource\\img\\virus.png");
 }
 
 void Enemy::Update() {
