@@ -12,7 +12,7 @@ public:
 	void Update();
 	void Draw();
 	void OnHitBox(GameObject* other);
-
 private:
 	int _grp;
+	int _snd;
 };

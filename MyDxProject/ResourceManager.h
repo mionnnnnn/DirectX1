@@ -3,6 +3,12 @@
 #include<map>
 #include"DxLib.h"
 
+
+//列挙型を宣言
+enum RESOURCE_TYPE :int {
+	TYPE_IMAGE, TYPE_SOUND
+};
+
 //Flyweightパターンを使用したリソース管理クラス
 class ResourceManager {
 public:
@@ -13,7 +19,7 @@ public:
 	static void DestroyInstance();
 
 	//リソースをロード
-	int LoadResource(std::string filename);
+	int LoadResource(std::string filename, RESOURCE_TYPE type = TYPE_IMAGE);
 
 private:
 	//リソースのハンドラを格納するDB

@@ -19,11 +19,19 @@ void ResourceManager::DestroyInstance() {
 }
 
 //リソースをロード
-int ResourceManager::LoadResource(std::string filename) {
+int ResourceManager::LoadResource(std::string filename, RESOURCE_TYPE type){
 	//DBに格納されていない場合、LoadGraphを使用して取得
-	if (_resourceDB.find(filename.c_str()) == _resourceDB.end())
-		_resourceDB[filename.c_str()] = LoadGraph(filename.c_str());
-
+	if (_resourceDB.find(filename.c_str()) == _resourceDB.end()) {
+		switch (type)
+		{
+		case TYPE_IMAGE:
+			_resourceDB[filename.c_str()] = LoadGraph(filename.c_str());
+			break;
+		case TYPE_SOUND:
+			_resourceDB[filename.c_str()] = LoadSoundMem(filename.c_str());
+			break;
+		}
+	}
 	//DBに登録されているリソースのIDを返す
 	return _resourceDB[filename.c_str()];
 }

@@ -1,12 +1,13 @@
 #include"Bullet.h"
 #include "ResourceManager.h"
+#include <random>
 
 //引数で発射位置の座標と角度を受け取り更新
 Bullet::Bullet(ObjectTransform* transform) {
 	_transform._position = transform->_position;
 	_transform._angle = transform->_angle;
-	//画像サイズを設定
-	_transform._size = Vector2D<float>(16, 16);
+	_transform._size = Vector2D<float>(16, 16);//画像サイズを設定
+	_tag = "Bullet";
 }
 
 Bullet::~Bullet() {
@@ -15,7 +16,15 @@ Bullet::~Bullet() {
 
 //開始処理
 void Bullet::Start() {
+	//弾画像
+	std::random_device rand;
 	_grp = ResourceManager::GetInstance()->LoadResource("Resource\\img\\bullet.png");
+
+	//サウンドロード
+	_snd = ResourceManager::GetInstance()->LoadResource("Resource\\sounf\\laser2.mp3", TYPE_SOUND);
+
+	//サウンド再生
+	PlaySoundMem(_snd, DX_PLAYTYPE_BACK);
 }
 
 //更新処理
@@ -51,8 +60,11 @@ void Bullet::Draw() {
 		_grp, TRUE);
 }
 
-//衝突検知
+//衝突検知: 弾が消える
 void Bullet::OnHitBox(GameObject* other) {
 	if (other->_tag == "Box")
 		Destroy();
+	if (other->_tag == "Enemy") {
+		
+	}
 }

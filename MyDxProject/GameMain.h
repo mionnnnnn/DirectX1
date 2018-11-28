@@ -15,13 +15,8 @@ public:
 	void MainLoop();
 	void Release();
 private:
-	GameObject* _player;
+	//GameObject* _player;
+	Player* _player;
 	Enemy* _enemy;
 	GameObject* _box;
-	//GameObjectContainer _container;
-	//Player _player;
-	//int key;
-	//int playerX = 0;
-	//int playerY = 0;
-	//int playerGraph;
 };

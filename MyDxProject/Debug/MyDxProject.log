@@ -1,7 +1,2 @@
-﻿  GameMain.cpp
-c:\k017a1612\c++\directx\mydxproject\gamemain.cpp(10): warning C4244: '引数': 'std::random_device::result_type' から 'float' への変換です。データが失われる可能性があります。
-  Enemy.cpp
-  コードを生成中...
-  スキップ中... (関連する変更は検出されませんでした)
-  DrawPixel.cpp
+﻿  Particle.cpp
   MyDxProject.vcxproj -> C:\K017A1612\C++\DirectX\MyDxProject\Debug\MyDxProject.exe

@@ -1,6 +1,6 @@
 #include "Player.h"
-#include "Vector2D.h"
-#include"Bullet.h"
+//#include "Vector2D.h"
+//#include"Bullet.h" //削除
 #include"GameObjectContainer.h"
 
 //コンストラクタ
@@ -9,7 +9,13 @@ Player::Player()// :_pos(320,240), _moveVec(0,0), _angle(0)
 	_transform._position = Vector2D<float>(320, 240);
 	_transform._size = Vector2D<float>(64, 64);
 	_waitFrame = 0;
+}
 
+Player::Player(std::string tag) {
+	_transform._position = Vector2D<float>(320, 240);
+	_transform._size = Vector2D<float>(64, 64);
+	_waitFrame = 0;
+	_tag = tag;
 }
 
 //デストラクタ
@@ -17,7 +23,6 @@ Player::~Player() {
 
 }
 //開始処理
-
 void Player::Start() {
 	_grp = LoadGraph("Resource\\img\\player.png");
 	
@@ -48,7 +53,8 @@ void Player::Update() {
 	if (_waitFrame == 0) {
 		//ボタンを押すと弾発射（Space）
 		if (key & PAD_INPUT_10) {
-			GameObjectContainer::GetInstance()->AddGameObject(new Bullet(&_transform));
+			//GameObjectContainer::GetInstance()->AddGameObject(new Bullet(&_transform));
+			Shot();//追加
 			_waitFrame = 1;//フレームの値を1にする
 		}
 	}
@@ -77,4 +83,18 @@ void Player::Draw() {
 		static_cast<int>(_transform._position._x), 
 		static_cast<int>(_transform._position._y),
 		1.0f, _transform._angle, _grp, TRUE, FALSE);
+}
+
+// ↓↓ 追加 ↓↓
+// 弾を発射したボタが押されたことをSubscribeされた処理に通知する
+void Player::Shot() {
+	ObjectTransform transform;
+	transform._position = this->_transform._position;
+	transform._angle = this->_transform._angle;
+	_shotSubject.OnNext(transform);
+}
+
+// 弾を発射するボタンが押された際に実行するSubjectを返す
+IObservable<ObjectTransform>* Player::OnShotButton() {
+	return &_shotSubject;
 }

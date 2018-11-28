@@ -1,5 +1,6 @@
 #include "Enemy.h"
 #include "GameObjectContainer.h"
+#include <random>
 
 //コンストラクタ
 Enemy::Enemy() {
@@ -68,4 +69,24 @@ void Enemy::Draw() {
 //追跡するターゲット追加
 void Enemy::SetTarget(GameObject* target) {
 	_target = target;
+}
+
+void Enemy::OnHitBox(GameObject* other) {
+	//if (other->_tag == "Player") {
+	//	std::random_device rand;
+	//	_transform._position._x = rand() % 640;
+	//	_transform._position._y = rand() % 480;
+	//}
+
+		//衝突したオブジェクトがBulletだった場合
+	if (other->_tag == "Bullet") {
+		ObjectTransform transform;
+		transform._position = this->_transform._position;
+		_hitSubject.OnNext(transform);
+	}
+}
+
+//Subjectを返す
+IObservable<ObjectTransform>* Enemy::OnHit() {
+	return &_hitSubject;
 }
