@@ -7,6 +7,7 @@ public:
 	ObjectTransform() : _position(0, 0), _angle(0), _scale(1, 1), _moveVec(0, 0), _size(0, 0) {
 
 	}
+
 	ObjectTransform(Vector2D<float> pos) : _position(pos), _angle(0), _scale(1, 1), _moveVec(0, 0), _size(0, 0) {
 
 	}

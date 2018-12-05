@@ -37,7 +37,7 @@ void Box::Draw() {
 		GetColor(255, 255, 255), TRUE);
 }
 
+//衝突したらオブジェクト破棄
 void Box::OnHitBox(GameObject* other) {
-	//衝突したらオブジェクト破棄
 	Destroy();
 }

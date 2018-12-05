@@ -30,7 +30,7 @@ void Bullet::Start() {
 
 //更新処理
 void Bullet::Update() {
-	//アフィン変換
+	//アフィン変換 速さ？
 	float moveX = 3;
 	float moveY = 0;
 
@@ -40,7 +40,8 @@ void Bullet::Update() {
 		moveY*static_cast<float>(cos(_transform._angle));
 	_transform._position += _transform._moveVec;
 
-	//画面左からはみ出たら
+	//画面からはみ出たら
+	//左
 	if (_transform._position._x < 0)
 		Destroy();
 	//右
@@ -65,6 +66,10 @@ void Bullet::Draw() {
 void Bullet::OnHitBox(GameObject* other) {
 	if (other->_tag == "Box")
 		Destroy();
-	if (other->_tag == "Enemy")
+	//敵と弾が消える(はず)
+	if (other->_tag == "Enemy") {
 		PlaySoundMem(_damagesnd, DX_PLAYTYPE_BACK);
+		other->Destroy();
+		Destroy();
+	}
 }

@@ -2,6 +2,7 @@
 //#include "Vector2D.h"
 //#include"Bullet.h" //削除
 #include"GameObjectContainer.h"
+#include "Algorithm.h"
 
 //コンストラクタ
 Player::Player()// :_pos(320,240), _moveVec(0,0), _angle(0) 
@@ -67,6 +68,13 @@ void Player::Update() {
 			_waitFrame = 0;
 	}
 
+	//1205追加
+	//クランプ処理
+	_transform._position._x = Algorithm::Clamp<float>(
+		_transform._position._x, 0, 640);
+	_transform._position._y = Algorithm::Clamp<float>(
+		_transform._position._y, 0, 480);
+
 	//アフィン変換
 	float moveX = 3;
 	float moveY = 3;
@@ -86,7 +94,7 @@ void Player::Draw() {
 }
 
 // ↓↓ 追加 ↓↓
-// 弾を発射したボタが押されたことをSubscribeされた処理に通知する
+// 弾を発射したボタンが押されたことをSubscribeされた処理に通知する
 void Player::Shot() {
 	ObjectTransform transform;
 	transform._position = this->_transform._position;

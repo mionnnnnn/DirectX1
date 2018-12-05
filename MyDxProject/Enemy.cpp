@@ -45,8 +45,8 @@ void Enemy::Update() {
 	//atan2を使用して2点間の角度を計算
 	_transform._angle = atan2(y, x);
 
-	//アフィン変換
-	float moveX = 1;
+	//アフィン変換 速さ
+	float moveX = 2;
 	float moveY = 0;
 	_transform._moveVec._x = 
 		moveX * static_cast<float>(cos(_transform._angle)) -
@@ -72,17 +72,15 @@ void Enemy::SetTarget(GameObject* target) {
 }
 
 void Enemy::OnHitBox(GameObject* other) {
-	//if (other->_tag == "Player") {
-	//	std::random_device rand;
-	//	_transform._position._x = rand() % 640;
-	//	_transform._position._y = rand() % 480;
-	//}
-
-		//衝突したオブジェクトがBulletだった場合
+	//衝突したオブジェクトがBulletだった場合
 	if (other->_tag == "Bullet") {
 		ObjectTransform transform;
 		transform._position = this->_transform._position;
 		_hitSubject.OnNext(transform);
+		Destroy();
+	}
+	if (other->_tag == "Player") {
+
 	}
 }
 

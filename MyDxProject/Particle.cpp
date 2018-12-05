@@ -51,6 +51,11 @@ void Particle::Update() {
 		if (Spark[i].Bright < 0)
 			Spark[i].Valid = 0;
 	}
+
+	for (int i = 0; i < MAX_SPARK; i++)
+		if (Spark[i].Valid != 0)
+			return;
+	Destroy();
 }
 
 void Particle::Draw() {
