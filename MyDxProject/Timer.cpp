@@ -19,3 +19,10 @@ void Timer::Draw() {
 	std::string label = "TIME : " + std::to_string(_time / 60);
 	DrawString(500, 27, label.c_str(), GetColor(255, 255, 255));
 }
+
+bool Timer::TimeCheck() {
+	if (_time > 120) {
+		return true;
+	}
+	return false;
+}

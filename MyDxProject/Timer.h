@@ -10,6 +10,7 @@ public:
 	void  Start();
 	void Update();
 	void Draw();
+	bool TimeCheck();
 
 private:
 	int _time;
