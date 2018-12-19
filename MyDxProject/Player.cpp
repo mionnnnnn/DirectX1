@@ -3,6 +3,7 @@
 //#include"Bullet.h" //削除
 #include"GameObjectContainer.h"
 #include "Algorithm.h"
+#include "Input.h"
 
 //コンストラクタ
 Player::Player()// :_pos(320,240), _moveVec(0,0), _angle(0) 
@@ -50,11 +51,11 @@ void Player::Update() {
 	if (key & PAD_INPUT_LEFT)
 		_transform._angle -= ToRadian(4);
 
+	Input::UpdateKey();
 	//待機フレームが0
 	if (_waitFrame == 0) {
 		//ボタンを押すと弾発射（Space）
-		if (key & PAD_INPUT_10) {
-			//GameObjectContainer::GetInstance()->AddGameObject(new Bullet(&_transform));
+		if (Input::GetKey(KEY_INPUT_SPACE) == 1) {
 			Shot();//追加
 			_waitFrame = 1;//フレームの値を1にする
 		}
@@ -105,4 +106,16 @@ void Player::Shot() {
 // 弾を発射するボタンが押された際に実行するSubjectを返す
 IObservable<ObjectTransform>* Player::OnShotButton() {
 	return &_shotSubject;
+}
+
+//当たり判定
+void Player::OnHitBox(GameObject* other) {
+	if (other->_tag == "Enemy") {
+		_hitSubject.OnNext(_transform);
+		Destroy();
+	}
+}
+
+IObservable<ObjectTransform>* Player::OnHit() {
+	return &_hitSubject;
 }

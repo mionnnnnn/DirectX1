@@ -33,3 +33,7 @@ void Background::Draw()
 		static_cast<int>(_transform._position._y),
 		_grp, TRUE);
 }
+
+void Background::stopBGM() {
+	StopSoundMem(_snd);
+}

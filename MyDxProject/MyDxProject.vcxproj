@@ -153,8 +153,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="Box.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="GameOver.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="Logo.cpp" />
     <ClCompile Include="WinMain.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -173,6 +176,7 @@
   <ItemGroup>
     <ClInclude Include="Algorithm.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="Bomb.h" />
     <ClInclude Include="Box.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Enemy.h" />
@@ -180,7 +184,9 @@
     <ClInclude Include="GameMain.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectContainer.h" />
+    <ClInclude Include="GameOver.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="Input.h" />
     <ClInclude Include="IObservable.h" />
     <ClInclude Include="IObserver.h" />
     <ClInclude Include="IScene.h" />

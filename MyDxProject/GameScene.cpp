@@ -4,6 +4,7 @@
 #include "Bullet.h"
 #include "Particle.h"
 #include "Background.h"
+#include "Bomb.h"
 
 void GameScene::Initialize() {
 	//Å‰‚É”wŒi‚ğ’Ç‰Á
@@ -17,6 +18,17 @@ void GameScene::Initialize() {
 		_player->OnShotButton()->Subscribe([this](ObjectTransform transform) {
 			GameObjectContainer::GetInstance()->AddGameObject(new Bullet(&transform));
 		});
+		//ƒvƒŒƒCƒ„[Õ“Ë
+		_player->OnHit()->Subscribe([this](ObjectTransform transform) {
+			//”š”­
+			GameObjectContainer::GetInstance()->AddGameObject(new Bomb(&transform));
+			//BGM’â~
+			_background->stopBGM();
+			_over = new GameOver();
+			//GameOver‚ÖGO
+			GameObjectContainer::GetInstance()->AddGameObject(_over);
+		});
+		//playerƒCƒ“ƒXƒ^ƒ“ƒX“o˜^
 		GameObjectContainer::GetInstance()->AddGameObject(_player);
 	}
 
@@ -34,14 +46,18 @@ void GameScene::Initialize() {
 			//“G¶¬
 			Enemy* enemy = new Enemy(pos, "Enemy");
 			enemy->SetTarget(_player);
-			//’eÕ“Ë‚ÌƒCƒxƒ“ƒg“o˜^
+			//“G‚É’e‚ªÕ“Ë‚µ‚½‚Æ‚«
 			enemy->OnHit()->Subscribe([this](ObjectTransform transform) {
 				_score->AddScore();
+				//ƒp[ƒeƒBƒNƒ‹
 				GameObjectContainer::GetInstance()->AddGameObject(new Particle(&transform));
+				//”š”­
+				GameObjectContainer::GetInstance()->AddGameObject(new Bomb(&transform));
 			});
 			//“o˜^
 			GameObjectContainer::GetInstance()->AddGameObject(enemy);
 		});
+		//ƒXƒ|[ƒ““o˜^
 		GameObjectContainer::GetInstance()->AddGameObject(_enemySpawn);
 	}
 
@@ -64,5 +80,6 @@ void GameScene::MainLoop() {
 void GameScene::Release() {
 	GameObjectContainer::GetInstance()->Release();
 	GameObjectContainer::GetInstance()->DestroyInstance();
-	ResourceManager::DestroyInstance();
+	//«SceneManager‚ÖˆÚ“®
+	//ResourceManager::DestroyInstance();
 }

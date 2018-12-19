@@ -25,7 +25,14 @@ public:
 	//弾を撃った際に実行するイベントを登録する(追加)
 	IObservable<ObjectTransform>* OnShotButton();
 
+	//衝突判定
+	void OnHitBox(GameObject* other);
+
+	//衝突時挙動
+	IObservable<ObjectTransform>* OnHit();
+
 private:
+	//画像用
 	int _grp;
 
 	//次の弾を打つまでの待機時間
@@ -33,4 +40,7 @@ private:
 
 	//サブジェクトを宣言(追加)
 	Subject<ObjectTransform>_shotSubject;
+
+	//衝突時に通知するやつ
+	Subject<ObjectTransform> _hitSubject;
 };

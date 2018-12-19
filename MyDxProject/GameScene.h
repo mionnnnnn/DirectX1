@@ -14,6 +14,7 @@
 #include "SpawnController.h"
 #include "Score.h"
 #include "Timer.h"
+#include "GameOver.h"
 
 class GameScene : public IScene {
 public:
@@ -29,4 +30,5 @@ private:
 	SpawnController* _enemySpawn;
 	Score* _score;
 	Timer* _timer;
+	GameOver* _over;
 };

@@ -12,6 +12,7 @@ public:
 	void Start();
 	void Update();
 	void Draw();
+	void stopBGM();
 
 private:
 	int _grp;

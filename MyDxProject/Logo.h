@@ -13,4 +13,6 @@ public:
 
 private: 
 	Timer* _timer;
+	int _se;
+	int _font;
 };

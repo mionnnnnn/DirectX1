@@ -1,4 +1,5 @@
 #include"SceneManager.h"
+#include "ResourceManager.h"
 
 //インスタンス
 SceneManager* SceneManager::_instance = NULL;
@@ -51,6 +52,9 @@ void SceneManager::Update() {
 		ScreenFlip();
 		fps.Wait();
 	}
+
+	//ここでリソース消す(GameSceneから移動)
+	ResourceManager::DestroyInstance();
 
 	//シーンのオブジェクトを解放
 	if (_currentScene != NULL) {

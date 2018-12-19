@@ -7,4 +7,10 @@ public:
 	void Initialize();
 	void MainLoop();
 	void Release();
+
+private:
+	//BGM用
+	int _sound;
+	//フォント用
+	int _font;
 };
