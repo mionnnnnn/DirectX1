@@ -36,11 +36,17 @@ void GameScene::Initialize() {
 	{
 		//ÉXÉ|Å[Éìà íuê›íË
 		_enemySpawn = new SpawnController();
+		_enemyspawn2 = new SpawnController();
+		_enemyspawn3 = new SpawnController();
+		_enemyspawn4 = new SpawnController();
 		//àÍÇ©èäÉXÉ|Å[Éìà íuí«â¡
-		_enemySpawn->AddSpaenPoint(320, -32);
-		_enemySpawn->AddSpaenPoint(320, 480 + 32);
-		_enemySpawn->AddSpaenPoint(-32, 240);
-		_enemySpawn->AddSpaenPoint(640 + 32, 240);
+		_enemySpawn->AddSpaenPoint(320, -32);//è„
+		_enemyspawn2->AddSpaenPoint(640 + 32, 240);//âE
+		_enemyspawn3->AddSpaenPoint(640 + 32, -32);//âEè„
+		_enemyspawn4->AddSpaenPoint(640 + 32, 240 + 32);//âEâ∫
+		//_enemySpawn->AddSpaenPoint(320, 480 + 32);//â∫
+		//_enemySpawn->AddSpaenPoint(-32, 240);//ç∂
+
 		//ê∂ê¨éûí ímÇéÛÇØéÊÇÈ
 		_enemySpawn->OnSpawn()->Subscribe([this](Vector2D<float> pos) {
 			//ìGê∂ê¨
@@ -57,8 +63,62 @@ void GameScene::Initialize() {
 			//ìoò^
 			GameObjectContainer::GetInstance()->AddGameObject(enemy);
 		});
+
+		_enemyspawn2->OnSpawn()->Subscribe([this](Vector2D<float> pos) {
+			//ìGê∂ê¨
+			Enemy* enemy2 = new Enemy(pos, "Enemy");
+			enemy2->SetTarget(_player);
+			//ìGÇ…íeÇ™è’ìÀÇµÇΩÇ∆Ç´
+			enemy2->OnHit()->Subscribe([this](ObjectTransform transform) {
+				_score->AddScore();
+				//ÉpÅ[ÉeÉBÉNÉã
+				GameObjectContainer::GetInstance()->AddGameObject(new Particle(&transform));
+				//îöî≠
+				GameObjectContainer::GetInstance()->AddGameObject(new Bomb(&transform));
+			});
+			//ìoò^
+			GameObjectContainer::GetInstance()->AddGameObject(enemy2);
+		});
+
+		_enemyspawn3->OnSpawn()->Subscribe([this](Vector2D<float> pos) {
+			//ìGê∂ê¨
+			Enemy* enemy3 = new Enemy(pos, "Enemy");
+			enemy3->SetTarget(_player);
+			//ìGÇ…íeÇ™è’ìÀÇµÇΩÇ∆Ç´
+			enemy3->OnHit()->Subscribe([this](ObjectTransform transform) {
+				_score->AddScore();
+				//ÉpÅ[ÉeÉBÉNÉã
+				GameObjectContainer::GetInstance()->AddGameObject(new Particle(&transform));
+				//îöî≠
+				GameObjectContainer::GetInstance()->AddGameObject(new Bomb(&transform));
+			});
+			//ìoò^
+			GameObjectContainer::GetInstance()->AddGameObject(enemy3);
+		});
+
+		_enemyspawn4->OnSpawn()->Subscribe([this](Vector2D<float> pos) {
+			//ìGê∂ê¨
+			Enemy* enemy4 = new Enemy(pos, "Enemy");
+			enemy4->SetTarget(_player);
+			//ìGÇ…íeÇ™è’ìÀÇµÇΩÇ∆Ç´
+			enemy4->OnHit()->Subscribe([this](ObjectTransform transform) {
+				_score->AddScore();
+				//ÉpÅ[ÉeÉBÉNÉã
+				GameObjectContainer::GetInstance()->AddGameObject(new Particle(&transform));
+				//îöî≠
+				GameObjectContainer::GetInstance()->AddGameObject(new Bomb(&transform));
+			});
+			//ìoò^
+			GameObjectContainer::GetInstance()->AddGameObject(enemy4);
+		});
+
+
 		//ÉXÉ|Å[Éììoò^
 		GameObjectContainer::GetInstance()->AddGameObject(_enemySpawn);
+		GameObjectContainer::GetInstance()->AddGameObject(_enemyspawn2);
+		GameObjectContainer::GetInstance()->AddGameObject(_enemyspawn3);
+		GameObjectContainer::GetInstance()->AddGameObject(_enemyspawn4);
+
 	}
 
 	//ÉXÉRÉA

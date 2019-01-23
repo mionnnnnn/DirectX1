@@ -30,7 +30,13 @@ Enemy::~Enemy() {
 }
 
 void Enemy::Start() {
-	_grp = LoadGraph("Resource\\img\\virus.png");
+	//_grp = LoadGraph("Resource\\img\\virus.png");
+	cake = LoadGraph("Resource\\img\\shortcake.png");
+	_virus = LoadGraph("Resource\\img\\kin_kabi.png");
+	_utu = LoadGraph("Resource\\img\\utu.png");
+	_game = LoadGraph("Resource\\img\\portable_game.png");
+	//juken1 = LoadGraph("Resource\\img\\jyukenn08.png");
+	//juken2 = LoadGraph("Resource\\img\\jyukenn10.png");
 }
 
 void Enemy::Update() {
@@ -38,7 +44,7 @@ void Enemy::Update() {
 	if (_target == NULL)
 		return;
 
-	//ターゲットと自信の座標差を計算
+	//ターゲットと自身の座標差を計算
 	float y = _target->_transform._position._y - _transform._position._y;
 	float x = _target->_transform._position._x - _transform._position._x;
 
@@ -63,7 +69,7 @@ void Enemy::Draw() {
 	DrawRotaGraph(
 		static_cast<int>(_transform._position._x),
 		static_cast<int>(_transform._position._y),
-		1.0f, _transform._angle, _grp, TRUE, FALSE);
+		1.0f, _transform._angle, _virus, TRUE, FALSE);
 }
 
 //追跡するターゲット追加
@@ -78,9 +84,6 @@ void Enemy::OnHitBox(GameObject* other) {
 		transform._position = this->_transform._position;
 		_hitSubject.OnNext(transform);
 		Destroy();
-	}
-	if (other->_tag == "Player") {
-
 	}
 }
 

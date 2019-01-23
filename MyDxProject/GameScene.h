@@ -31,4 +31,10 @@ private:
 	Score* _score;
 	Timer* _timer;
 	GameOver* _over;
+
+	SpawnController* _enemyspawn2;
+	SpawnController* _enemyspawn3;
+	SpawnController* _enemyspawn4;
+
+
 };

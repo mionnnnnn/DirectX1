@@ -18,7 +18,7 @@ Bullet::~Bullet() {
 void Bullet::Start() {
 	//弾画像
 	std::random_device rand;
-	_grp = ResourceManager::GetInstance()->LoadResource("Resource\\img\\bulletorigin.png");
+	_grp = ResourceManager::GetInstance()->LoadResource("Resource\\img\\nikukyu.png");
 
 	//サウンドロード
 	_snd = ResourceManager::GetInstance()->LoadResource("Resource\\sound\\laser2.mp3", TYPE_SOUND);
@@ -26,6 +26,8 @@ void Bullet::Start() {
 
 	//サウンド再生
 	PlaySoundMem(_snd, DX_PLAYTYPE_BACK);
+
+	_fightfont = CreateFontToHandle("メイリオ", 25, 0, DX_FONTTYPE_NORMAL);
 }
 
 //更新処理
@@ -60,12 +62,16 @@ void Bullet::Draw() {
 		static_cast<int>(_transform._position._x - (_transform._size._x / 2)),
 		static_cast<int>(_transform._position._y - (_transform._size._y / 2)),
 		_grp, TRUE);
+	DrawStringToHandle(130, 150,
+		"がんばれ～！",
+		GetColor(255, 255, 255), _fightfont);
+
 }
 
 //衝突検知: 弾が消える
 void Bullet::OnHitBox(GameObject* other) {
-	if (other->_tag == "Box")
-		Destroy();
+	//if (other->_tag == "Box")
+	//	Destroy();
 	//敵と弾が消える(はず)
 	if (other->_tag == "Enemy") {
 		PlaySoundMem(_damagesnd, DX_PLAYTYPE_BACK);

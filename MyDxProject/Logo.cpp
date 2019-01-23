@@ -7,11 +7,12 @@ void Logo::Initialize() {
 	PlaySoundMem(_se, DX_PLAYTYPE_BACK);
 	_timer = new Timer();
 	GameObjectContainer::GetInstance()->AddGameObject(_timer);
-	_font = CreateFontToHandle("Consolas", 32, 0, DX_FONTTYPE_NORMAL);
+	_font = CreateFontToHandle("メイリオ", 25, 0, DX_FONTTYPE_NORMAL);
 }
 
 void Logo::MainLoop() {
-	DrawStringToHandle(260, 240, "L o g o", GetColor(255, 255, 255), _font);
+	DrawStringToHandle(250, 240, 
+		"ゲームプログラミング２\n　　C++基礎 課題", GetColor(255, 255, 255), _font);
 	_timer->Update();
 	if (_timer->TimeCheck())
 		SceneManager::GetInstance()->LoadScene(new TitleScene());

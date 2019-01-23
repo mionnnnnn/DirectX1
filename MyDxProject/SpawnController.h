@@ -3,7 +3,7 @@
 #include "Subject.h"
 #include <vector>
 #include<random>
-#define SPAWN_INTERVAL 60 //1回のスポーンの待機時間
+#define SPAWN_INTERVAL 90 //1回のスポーンの待機時間
 
 //スポーンコントローラクラス
 class SpawnController : public GameObject {

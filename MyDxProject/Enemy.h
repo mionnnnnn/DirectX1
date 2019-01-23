@@ -19,6 +19,12 @@ public:
 
 private:
 	int _grp;
+	int cake;
+	int _virus;
+	int _utu;
+	int _game;
+	//int juken1;
+	//int juken2;
 	GameObject* _target;//追跡するターゲットを設定
 	Subject<ObjectTransform> _hitSubject;
 };

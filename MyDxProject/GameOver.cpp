@@ -4,6 +4,8 @@
 #include "GameScene.h"
 #include "Input.h"
 
+//‡Ši‚©•s‡Ši‚©‚ÌŒ‹‰Ê’Ê’mI
+
 GameOver::GameOver() {
 	_transform._size = Vector2D<float>(640, 320);
 	_transform._position = Vector2D<float>(320, 240);
@@ -12,7 +14,7 @@ GameOver::GameOver() {
 GameOver::~GameOver(){}
 
 void GameOver::Start() {
-	_grp = ResourceManager::GetInstance()->LoadResource("Resource\\img\\GameOver.png");
+	_grp = ResourceManager::GetInstance()->LoadResource("Resource\\img\\GameOver2.png");
 	_snd = ResourceManager::GetInstance()->
 		LoadResource("Resource\\sound\\Bad.mp3", TYPE_SOUND);
 	PlaySoundMem(_snd, DX_PLAYTYPE_BACK);

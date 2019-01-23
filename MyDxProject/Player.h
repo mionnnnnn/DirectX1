@@ -34,6 +34,7 @@ public:
 private:
 	//‰æ‘œ—p
 	int _grp;
+	int _grp2;
 
 	//ŽŸ‚Ì’e‚ð‘Å‚Â‚Ü‚Å‚Ì‘Ò‹@ŽžŠÔ
 	int _waitFrame;

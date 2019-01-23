@@ -16,5 +16,6 @@ public:
 
 private:
 	int _grp;
+	int _jukensei;
 	int _snd;
 };

@@ -26,8 +26,8 @@ Player::~Player() {
 }
 //開始処理
 void Player::Start() {
-	_grp = LoadGraph("Resource\\img\\playerorigin.png");
-	
+	_grp2 = LoadGraph("Resource\\img\\dog.png");
+	_grp = LoadGraph("Resource\\img\\illustrain05-doubutsu16.png");
 }
 
 //更新

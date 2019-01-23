@@ -13,4 +13,5 @@ private:
 	int _sound;
 	//フォント用
 	int _font;
+	int _image;
 };

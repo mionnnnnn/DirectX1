@@ -5,17 +5,29 @@
 
 void TitleScene::Initialize() {
 	//sound load
+	_image = LoadGraph("Resource\\img\\juken03.png");
+	//_sound = ResourceManager::GetInstance()->LoadResource(
+	//	"Resource\\sound\\Sousa-Stars-and-Stripes-Forever.mp3", TYPE_SOUND);
 	_sound = ResourceManager::GetInstance()->LoadResource(
-		"Resource\\sound\\Sousa-Stars-and-Stripes-Forever.mp3", TYPE_SOUND);
+		"Resource\\sound\\Twinkle-Little-Star.mp3", TYPE_SOUND);
+
 	PlaySoundMem(_sound, DX_PLAYTYPE_LOOP);
 
 	//to get font
-	_font = CreateFontToHandle("メイリオ", 32, 0, DX_FONTTYPE_NORMAL);
+	_font = CreateFontToHandle("UD デジタル 教科書体 NP-R", 35, 0, DX_FONTTYPE_NORMAL);
 }
 
 void TitleScene::MainLoop() {
+	//背景
+	DrawGraph(0, -70, _image, TRUE);
+
 	//フォント指定でもじもじ
-	DrawStringToHandle(240, 240, "タイトル画面", GetColor(255, 255, 255), _font);
+	DrawStringToHandle(50, 150, 
+		"センター試験を控えている男の子を\n　　色んな(仮)妨害から守るゲーム", 
+		GetColor(0, 0, 0), _font);
+	DrawStringToHandle(130, 250,
+		"PRESS SPACE",
+		GetColor(0, 0, 0), _font);
 	//DrawString(280, 200, "Title", GetColor(255, 255, 255));
 	//DrawString(280, 240, "Press Space Key", GetColor(255, 255, 255));
 

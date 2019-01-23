@@ -14,7 +14,9 @@ Background::~Background()
 
 void Background::Start()
 {
-	_grp = LoadGraph("Resource\\img\\bg.png");
+	//_grp = LoadGraph("Resource\\img\\bg.png");
+	_grp = LoadGraph("Resource\\img\\back.jpg");
+	_jukensei = LoadGraph("Resource\\img\\jyukenn08.png");
 	//サウンドロード
 	_snd = ResourceManager::GetInstance()->LoadResource("Resource\\sound\\gameplay_BGM.mp3", TYPE_SOUND);
 
@@ -32,6 +34,7 @@ void Background::Draw()
 	DrawGraph(static_cast<int>(_transform._position._x),
 		static_cast<int>(_transform._position._y),
 		_grp, TRUE);
+	DrawGraph(0, 230, _jukensei, TRUE);
 }
 
 void Background::stopBGM() {
